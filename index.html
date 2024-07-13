@@ -14,17 +14,19 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 300px;
+      width: 350px;
       max-width: 100%;
-      background-color: white;
-      border: 1px solid #ccc;
+      background-color: #333;
+      border: 1px solid #444;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      color: white;
+      font-family: 'Poppins', sans-serif;
     }
     .chatbox-header {
-      background-color: #007bff;
+      background-color: #444;
       color: white;
-      padding: 10px;
+      padding: 15px;
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       display: flex;
@@ -32,20 +34,24 @@
       align-items: center;
     }
     .chatbox-body {
-      padding: 10px;
+      padding: 15px;
       height: 300px;
       overflow-y: auto;
+      background-color: #333;
     }
     .chatbox-footer {
       display: flex;
       padding: 10px;
-      border-top: 1px solid #ccc;
+      border-top: 1px solid #444;
+      background-color: #333;
     }
     .chatbox-input {
       flex-grow: 1;
       padding: 10px;
-      border: 1px solid #ccc;
+      border: 1px solid #444;
       border-radius: 5px;
+      background-color: #222;
+      color: white;
     }
     .chatbox-send {
       background-color: #007bff;
@@ -55,6 +61,15 @@
       border-radius: 5px;
       margin-left: 10px;
       cursor: pointer;
+    }
+    .chatbox-message {
+      margin: 10px 0;
+    }
+    .chatbox-message.user {
+      text-align: right;
+    }
+    .chatbox-message.ai {
+      text-align: left;
     }
   </style>
 </head>
@@ -203,15 +218,15 @@
   <!-- Chatbox -->
   <div class="chatbox">
     <div class="chatbox-header">
-      <span>Chat with me</span>
+      <span>Hey, I'm Tars!</span>
       <button onclick="toggleChat()">-</button>
     </div>
     <div class="chatbox-body" id="chatbox-body">
-      <!-- Chat messages will go here -->
+      <div class="chatbox-message ai">I am a RAG-based LLM assistant, created by Vivek to answer visitor's questions.</div>
     </div>
     <div class="chatbox-footer">
-      <input type="text" class="chatbox-input" id="chatbox-input" placeholder="Type a message..." />
-      <button class="chatbox-send" onclick="sendMessage()">Send</button>
+      <input type="text" class="chatbox-input" id="chatbox-input" placeholder="Ask me anything about Vivek..." />
+      <button class="chatbox-send" onclick="sendMessage()">Ask</button>
     </div>
   </div>
 
@@ -234,6 +249,7 @@
       if (message.trim() !== '') {
         const chatboxBody = document.getElementById('chatbox-body');
         const userMessage = document.createElement('div');
+        userMessage.className = 'chatbox-message user';
         userMessage.textContent = 'You: ' + message;
         chatboxBody.appendChild(userMessage);
 
@@ -243,11 +259,14 @@
         // Simulate AI response
         setTimeout(() => {
           const aiMessage = document.createElement('div');
-          aiMessage.textContent = 'AI: ' + 'Hello! How can I assist you?';
+          aiMessage.className = 'chatbox-message ai';
+          aiMessage.textContent = 'AI: ' + 'I\'m here to help you with questions about Vivek.';
           chatboxBody.appendChild(aiMessage);
+          chatboxBody.scrollTop = chatboxBody.scrollHeight;
         }, 1000);
       }
     }
   </script>
 </body>
+
 </html>
