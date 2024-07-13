@@ -8,14 +8,65 @@
   <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
   <link rel="stylesheet" href="./assets/css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Chatbox Styles */
+    .chatbox {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      max-width: 100%;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .chatbox-header {
+      background-color: #007bff;
+      color: white;
+      padding: 10px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chatbox-body {
+      padding: 10px;
+      height: 300px;
+      overflow-y: auto;
+    }
+    .chatbox-footer {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid #ccc;
+    }
+    .chatbox-input {
+      flex-grow: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .chatbox-send {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
+  <!-- Header -->
+  <header>
+    <h1>Welcome to Aryaman Gajrani's Portfolio</h1>
+  </header>
 
   <main>
-
     <aside class="sidebar">
-
       <div class="sidebar-info">
         <figure class="avatar-box">
           <img src="./assets/images/my-avatar.png" alt="Aryaman Gajrani" width="80">
@@ -62,11 +113,9 @@
           <li class="social-item"><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
         </ul>
       </div>
-
     </aside>
 
     <div class="main-content">
-
       <nav class="navbar">
         <ul class="navbar-list">
           <li class="navbar-item"><a href="#" class="navbar-link active">About</a></li>
@@ -148,15 +197,57 @@
           </form>
         </section>
       </article>
-
     </div>
-
   </main>
+
+  <!-- Chatbox -->
+  <div class="chatbox">
+    <div class="chatbox-header">
+      <span>Chat with me</span>
+      <button onclick="toggleChat()">-</button>
+    </div>
+    <div class="chatbox-body" id="chatbox-body">
+      <!-- Chat messages will go here -->
+    </div>
+    <div class="chatbox-footer">
+      <input type="text" class="chatbox-input" id="chatbox-input" placeholder="Type a message..." />
+      <button class="chatbox-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
 
   <script src="./assets/js/script.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+    function toggleChat() {
+      const chatboxBody = document.getElementById('chatbox-body');
+      if (chatboxBody.style.display === 'none' || chatboxBody.style.display === '') {
+        chatboxBody.style.display = 'block';
+      } else {
+        chatboxBody.style.display = 'none';
+      }
+    }
 
+    function sendMessage() {
+      const input = document.getElementById('chatbox-input');
+      const message = input.value;
+      if (message.trim() !== '') {
+        const chatboxBody = document.getElementById('chatbox-body');
+        const userMessage = document.createElement('div');
+        userMessage.textContent = 'You: ' + message;
+        chatboxBody.appendChild(userMessage);
+
+        // Clear input
+        input.value = '';
+
+        // Simulate AI response
+        setTimeout(() => {
+          const aiMessage = document.createElement('div');
+          aiMessage.textContent = 'AI: ' + 'Hello! How can I assist you?';
+          chatboxBody.appendChild(aiMessage);
+        }, 1000);
+      }
+    }
+  </script>
 </body>
-
 </html>
