@@ -65,6 +65,10 @@
       color: #c0c0c0; /* Grey color like other links */
     }
 
+    .info-content {
+      text-align: center;
+    }
+
     .info-content .title {
       margin: 5px 0;
     }
@@ -135,15 +139,15 @@
       <nav class="navbar">
         <ul class="navbar-list">
           <li class="navbar-item"><a href="#" class="navbar-link active" data-page="about">About</a></li>
-          <li class="navbar-item"><a href="https://docs.google.com/document/d/1U1Cu67ZVnpyYFAZ9nhoRdo3zt4ZEU7HFj7BuDy8g2_c/edit?usp=sharing" class="navbar-link">Resume</a></li>
+          <li class="navbar-item"><a href="https://docs.google.com/document/d/1U1Cu67ZVnpyYFAZ9nhoRdo3zt4ZEU7HFj7BuDy8g2_c/edit?usp=sharing" target="_blank" class="navbar-link">Resume</a></li>
           <li class="navbar-item dropdown">
             <a href="#" class="navbar-link" data-page="portfolio">Portfolio</a>
             <ul class="dropdown-content">
-              <li><a href="https://www.figma.com/design/JnhDDT66wf4yaQ8bIyOXqj/Portfolio?node-id=457-30&t=SUwEpS5w6g33OFNh-1" class="dropdown-link">Figma</a></li>
-              <li><a href="https://github.com/aryamang2004/" class="dropdown-link">GitHub</a></li>
+              <li><a href="https://www.figma.com/design/JnhDDT66wf4yaQ8bIyOXqj/Portfolio?node-id=457-30&t=SUwEpS5w6g33OFNh-1" target="_blank" class="dropdown-link">Figma</a></li>
+              <li><a href="https://github.com/aryamang2004/" target="_blank" class="dropdown-link">GitHub</a></li>
             </ul>
           </li>
-          <li class="navbar-item"><a href="https://aryamang2004.medium.com/" class="navbar-link">Blog</a></li>
+          <li class="navbar-item"><a href="https://aryamang2004.medium.com/" target="_blank" class="navbar-link">Blog</a></li>
           <li class="navbar-item"><a href="#" class="navbar-link" data-page="contact">Contact</a></li>
         </ul>
       </nav>
@@ -243,7 +247,7 @@
         });
 
         const page = this.getAttribute('data-page');
-        if (page && page !== 'portfolio') {
+        if (page) {
           document.querySelector(`.main-content article[data-page="${page}"]`).classList.add('active');
         }
       });
