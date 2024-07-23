@@ -6,89 +6,251 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aryaman Gajrani</title>
   <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
-  <link rel="stylesheet" href="./assets/css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* Chatbox Styles */
-    .chatbox {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 350px;
-      max-width: 100%;
-      background-color: #333;
-      border: 1px solid #444;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      color: white;
+    body {
       font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    .chatbox-header {
-      background-color: #444;
-      color: white;
-      padding: 15px;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
+
+    .sidebar {
+      width: 250px;
+      background-color: #f8f9fa;
+      padding: 20px;
+      position: fixed;
+      height: 100%;
+    }
+
+    .sidebar-info {
+      text-align: center;
+    }
+
+    .avatar-box img {
+      border-radius: 50%;
+    }
+
+    .info-content .name {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 10px 0 5px 0;
+    }
+
+    .title {
+      font-size: 16px;
+      color: #555;
+    }
+
+    .info_more-btn {
+      background: none;
+      border: none;
+      font-size: 14px;
+      color: #007bff;
+      cursor: pointer;
+    }
+
+    .separator {
+      height: 1px;
+      background-color: #e0e0e0;
+      margin: 20px 0;
+    }
+
+    .contacts-list,
+    .social-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .contact-item,
+    .social-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .contact-item .icon-box,
+    .social-item .social-link {
+      margin-right: 10px;
+      font-size: 20px;
+    }
+
+    .contact-info .contact-title {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .contact-link {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .main-content {
+      margin-left: 250px;
+      padding: 20px;
+    }
+
+    .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background-color: #f8f9fa;
+      padding: 10px 20px;
+      border-bottom: 1px solid #e0e0e0;
     }
-    .chatbox-body {
-      padding: 15px;
-      height: 300px;
-      overflow-y: auto;
-      background-color: #333;
-    }
-    .chatbox-footer {
+
+    .navbar-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
       display: flex;
-      padding: 10px;
-      border-top: 1px solid #444;
-      background-color: #333;
     }
-    .chatbox-input {
-      flex-grow: 1;
-      padding: 10px;
-      border: 1px solid #444;
-      border-radius: 5px;
-      background-color: #222;
-      color: white;
+
+    .navbar-item {
+      margin-right: 20px;
+      position: relative;
     }
-    .chatbox-send {
+
+    .navbar-link {
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
+    }
+
+    .navbar-link:hover {
+      color: #007bff;
+    }
+
+    .navbar-item.dropdown .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      top: 100%;
+      left: 0;
+    }
+
+    .navbar-item.dropdown .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .navbar-item.dropdown .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .navbar-item.dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .about {
+      padding: 20px 0;
+    }
+
+    .article-title {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .service-title {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .service-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .service-item {
+      width: 45%;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .service-icon-box {
+      margin-right: 10px;
+    }
+
+    .service-content-box {
+      flex: 1;
+    }
+
+    .service-item-title {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-title {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .input-wrapper {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+    }
+
+    .form-btn {
+      display: flex;
+      align-items: center;
       background-color: #007bff;
-      color: white;
+      color: #fff;
+      padding: 10px 15px;
       border: none;
-      padding: 10px;
-      border-radius: 5px;
-      margin-left: 10px;
+      border-radius: 4px;
       cursor: pointer;
+      font-size: 16px;
     }
-    .chatbox-message {
-      margin: 10px 0;
+
+    .form-btn ion-icon {
+      margin-right: 5px;
     }
-    .chatbox-message.user {
-      text-align: right;
-    }
-    .chatbox-message.ai {
-      text-align: left;
+
+    iframe {
+      border: none;
+      width: 100%;
+      height: 300px;
     }
   </style>
 </head>
 
 <body>
-  <!-- Header -->
-  <header>
-    <h1>Welcome to Aryaman Gajrani's Portfolio</h1>
-  </header>
 
   <main>
+
     <aside class="sidebar">
+
       <div class="sidebar-info">
         <figure class="avatar-box">
           <img src="./assets/images/my-avatar.png" alt="Aryaman Gajrani" width="80">
         </figure>
         <div class="info-content">
           <h1 class="name">Aryaman Gajrani</h1>
-          <p class="title">Product Designer</p>
+          <p class="title">Software Engineer & Product Designer</p>
         </div>
         <button class="info_more-btn">
           <span>Show Contacts</span>
@@ -128,14 +290,22 @@
           <li class="social-item"><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
         </ul>
       </div>
+
     </aside>
 
     <div class="main-content">
+
       <nav class="navbar">
         <ul class="navbar-list">
           <li class="navbar-item"><a href="#" class="navbar-link active">About</a></li>
           <li class="navbar-item"><a href="https://docs.google.com/document/d/1U1Cu67ZVnpyYFAZ9nhoRdo3zt4ZEU7HFj7BuDy8g2_c/edit?usp=sharing" class="navbar-link">Resume</a></li>
-          <li class="navbar-item"><a href="https://www.figma.com/design/JnhDDT66wf4yaQ8bIyOXqj/Portfolio?node-id=457-30&t=SUwEpS5w6g33OFNh-1" class="navbar-link">Portfolio</a></li>
+          <li class="navbar-item dropdown">
+            <a href="#" class="navbar-link">Portfolio</a>
+            <ul class="dropdown-content">
+              <li><a href="https://www.figma.com/design/JnhDDT66wf4yaQ8bIyOXqj/Portfolio?node-id=457-30&t=SUwEpS5w6g33OFNh-1" class="dropdown-link">Figma</a></li>
+              <li><a href="https://github.com/aryamang2004/" class="dropdown-link">GitHub</a></li>
+            </ul>
+          </li>
           <li class="navbar-item"><a href="https://aryamang2004.medium.com/" class="navbar-link">Blog</a></li>
           <li class="navbar-item"><a href="#" class="navbar-link">Contact</a></li>
         </ul>
@@ -144,7 +314,7 @@
       <article class="about active" data-page="about">
         <header><h2 class="h2 article-title">About me</h2></header>
         <section class="about-text">
-          <p>I'm an aspiring Product Designer from California, specializing in web development and graphic design. I enjoy turning complex problems into simple, beautiful, and intuitive designs.</p>
+          <p>I'm an aspiring Software Engineer & Product Designer from California, specializing in web development and graphic design. I enjoy turning complex problems into simple, beautiful, and intuitive designs.</p>
           <p>My job is to build your website so that it is functional and user-friendly but at the same time attractive. Moreover, I add a personal touch to your product and make sure that it is eye-catching and easy to use. My aim is to bring across your message and identity in the most creative way.</p>
         </section>
         <section class="service">
@@ -212,61 +382,15 @@
           </form>
         </section>
       </article>
-    </div>
-  </main>
 
-  <!-- Chatbox -->
-  <div class="chatbox">
-    <div class="chatbox-header">
-      <span>Hey, I'm Tars!</span>
-      <button onclick="toggleChat()">-</button>
     </div>
-    <div class="chatbox-body" id="chatbox-body">
-      <div class="chatbox-message ai">I am a RAG-based LLM assistant, created by Vivek to answer visitor's questions.</div>
-    </div>
-    <div class="chatbox-footer">
-      <input type="text" class="chatbox-input" id="chatbox-input" placeholder="Ask me anything about Vivek..." />
-      <button class="chatbox-send" onclick="sendMessage()">Ask</button>
-    </div>
-  </div>
+
+  </main>
 
   <script src="./assets/js/script.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <script>
-    function toggleChat() {
-      const chatboxBody = document.getElementById('chatbox-body');
-      if (chatboxBody.style.display === 'none' || chatboxBody.style.display === '') {
-        chatboxBody.style.display = 'block';
-      } else {
-        chatboxBody.style.display = 'none';
-      }
-    }
 
-    function sendMessage() {
-      const input = document.getElementById('chatbox-input');
-      const message = input.value;
-      if (message.trim() !== '') {
-        const chatboxBody = document.getElementById('chatbox-body');
-        const userMessage = document.createElement('div');
-        userMessage.className = 'chatbox-message user';
-        userMessage.textContent = 'You: ' + message;
-        chatboxBody.appendChild(userMessage);
-
-        // Clear input
-        input.value = '';
-
-        // Simulate AI response
-        setTimeout(() => {
-          const aiMessage = document.createElement('div');
-          aiMessage.className = 'chatbox-message ai';
-          aiMessage.textContent = 'AI: ' + 'I\'m here to help you with questions about Vivek.';
-          chatboxBody.appendChild(aiMessage);
-          chatboxBody.scrollTop = chatboxBody.scrollHeight;
-        }, 1000);
-      }
-    }
-  </script>
 </body>
 
 </html>
