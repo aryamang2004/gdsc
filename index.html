@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aryaman Gajrani</title>
+  <title>Aryaman G.</title>
   <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
   <link rel="stylesheet" href="./assets/css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -78,8 +78,9 @@
           <img src="./assets/images/my-avatar.png" alt="Aryaman Gajrani" width="80">
         </figure>
         <div class="info-content">
-          <h1 class="name">Aryaman Gajrani</h1>
-          <p class="title">Software Engineer & Product Designer</p>
+          <h1 class="name">Aryaman G.</h1>
+          <p class="title">Software Engineer</p>
+          <p class="title">Product Designer</p>
         </div>
         <button class="info_more-btn">
           <span>Show Contacts</span>
@@ -132,7 +133,7 @@
           <li class="navbar-item"><a href="#" class="navbar-link active" data-page="about">About</a></li>
           <li class="navbar-item"><a href="https://docs.google.com/document/d/1U1Cu67ZVnpyYFAZ9nhoRdo3zt4ZEU7HFj7BuDy8g2_c/edit?usp=sharing" class="navbar-link">Resume</a></li>
           <li class="navbar-item dropdown">
-            <a href="#" class="navbar-link">Portfolio</a>
+            <a href="#" class="navbar-link" data-page="portfolio">Portfolio</a>
             <ul class="dropdown-content">
               <li><a href="https://www.figma.com/design/JnhDDT66wf4yaQ8bIyOXqj/Portfolio?node-id=457-30&t=SUwEpS5w6g33OFNh-1" class="dropdown-link">Figma</a></li>
               <li><a href="https://github.com/aryamang2004/" class="dropdown-link">GitHub</a></li>
@@ -225,15 +226,29 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <script>
     document.querySelectorAll('.navbar-link').forEach(link => {
-      link.addEventListener('click', function() {
+      link.addEventListener('click', function(event) {
+        event.preventDefault();
+        
+        document.querySelectorAll('.navbar-link').forEach(link => {
+          link.classList.remove('active');
+        });
+        this.classList.add('active');
+
         document.querySelectorAll('.main-content article').forEach(article => {
           article.classList.remove('active');
         });
+
         const page = this.getAttribute('data-page');
-        if (page) {
+        if (page && page !== 'portfolio') {
           document.querySelector(`.main-content article[data-page="${page}"]`).classList.add('active');
         }
       });
+    });
+
+    document.querySelector('.navbar-item.dropdown > .navbar-link').addEventListener('click', function(event) {
+      event.preventDefault();
+      const dropdownContent = this.nextElementSibling;
+      dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
     });
   </script>
 
