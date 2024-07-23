@@ -39,9 +39,12 @@
       display: block;
     }
 
-    .navbar-link:hover {
-      background-color: #ffdd57; /* Apply the same yellowish color for hover */
-      color: #000;
+    .navbar-link:hover, .navbar-link:focus {
+      color: #ffdd57; /* Apply the same yellowish color for hover */
+    }
+
+    .navbar-link.active {
+      color: #ffdd57; /* Apply the same yellowish color for active state */
     }
   </style>
 </head>
