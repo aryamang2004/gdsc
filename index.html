@@ -47,6 +47,19 @@
     .navbar-link.active {
       color: #ffdd57; /* Apply the same yellowish color for active state */
     }
+
+    /* Specific styles for Portfolio link */
+    .navbar-item.dropdown:hover > .navbar-link {
+      color: #ffdd57; /* Yellowish color for hover */
+    }
+
+    .navbar-item.dropdown:focus > .navbar-link {
+      color: #ffdd57; /* Yellowish color for focus */
+    }
+
+    .navbar-item.dropdown:not(:hover) > .navbar-link {
+      color: #fff; /* Original color when not hovering */
+    }
   </style>
 </head>
 
