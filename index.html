@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aryaman G.</title>
+  <title>Aryaman Gajrani</title>
   <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
   <link rel="stylesheet" href="./assets/css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -64,6 +64,10 @@
     .navbar-item.dropdown:not(:hover):not(:focus) > .navbar-link {
       color: #c0c0c0; /* Grey color like other links */
     }
+
+    .info-content .title {
+      margin: 5px 0;
+    }
   </style>
 </head>
 
@@ -78,7 +82,7 @@
           <img src="./assets/images/my-avatar.png" alt="Aryaman Gajrani" width="80">
         </figure>
         <div class="info-content">
-          <h1 class="name">Aryaman G.</h1>
+          <h1 class="name">Aryaman Gajrani</h1>
           <p class="title">Software Engineer</p>
           <p class="title">Product Designer</p>
         </div>
@@ -245,10 +249,14 @@
       });
     });
 
-    document.querySelector('.navbar-item.dropdown > .navbar-link').addEventListener('click', function(event) {
-      event.preventDefault();
+    document.querySelector('.navbar-item.dropdown > .navbar-link').addEventListener('mouseenter', function(event) {
       const dropdownContent = this.nextElementSibling;
-      dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+      dropdownContent.style.display = 'block';
+    });
+
+    document.querySelector('.navbar-item.dropdown').addEventListener('mouseleave', function(event) {
+      const dropdownContent = this.querySelector('.dropdown-content');
+      dropdownContent.style.display = 'none';
     });
   </script>
 
